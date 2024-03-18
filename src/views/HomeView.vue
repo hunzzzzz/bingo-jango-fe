@@ -18,11 +18,10 @@ body, html {
   width: 100%;
   height: 100%;
 }
-
 .hello {
   background-image: url('https://cdn.pixabay.com/photo/2016/09/04/21/34/owl-1645310_1280.jpg');
   background-size: cover;
-  height: 90vh;
+  height: 100vh;
   position: relative;
 }
 .center-text1 {
