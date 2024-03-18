@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import IntroduceMain from "@/views/introduce/IntroduceMain.vue";
 import RefrigeratorMain from "@/views/refrigerator/RefrigeratorMain.vue";
 import FoodMain from "@/views/food/FoodMain.vue";
@@ -10,12 +9,13 @@ import UserMain from "@/views/user/UserMain.vue";
 import Login from "@/views/user/Login.vue";
 import SignUp from "@/views/user/SignUp.vue";
 import ForgetPassword from "@/views/user/ForgetPassword.vue";
+import Home from "@/views/main/Home.vue";
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
   {
     path: '/introduce',
