@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login">
+      <h2 class="form-title">로그인</h2>
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="email">이메일</label>
@@ -23,6 +24,7 @@
           비밀번호를 잊으셨습니까?<router-link to="/forget-password">비밀번호찾기</router-link>
         </div>
       </form>
+      <form @submit.prevent="oauth2">
       <div class="social-login-buttons">
         <a href="http://localhost:8080/oauth2/login/kakao">
           <img src="@/assets/kakao.jpg" alt="카카오 로그인" class="social-button">
@@ -34,6 +36,7 @@
           <img src="@/assets/google.png" alt="구글 로그인" class="social-button">
         </a>
       </div>
+      </form>
     </div>
   </div>
 </template>
@@ -58,13 +61,15 @@ export default {
         });
         if (response.data.accessToken) {
           localStorage.setItem('accessToken', response.data.accessToken);
-          // Vuex 등을 사용하여 로그인 상태를 관리하는 코드가 있다면 여기에 추가
-          this.$router.push('/'); // 메인 화면으로 리디렉션. 여기서 '/'는 메인 페이지의 라우트를 가정한 것입니다.
+          this.$router.push('/');
         }
       } catch (error) {
         console.error('로그인 실패:', error);
       }
     },//TODO 소셜로그인은 분기처리해야햄!!
+    async oauth2() {
+
+    }
   },
 };
 </script>
@@ -72,6 +77,12 @@ export default {
 
 
 <style>
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
 .login-container {
   display: flex;
   justify-content: center;
@@ -85,11 +96,11 @@ export default {
 }
 
 .login {
-  padding: 50px;
+  padding: 30px;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
