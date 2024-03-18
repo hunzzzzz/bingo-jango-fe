@@ -1,33 +1,43 @@
 <template>
-  <div class="sign-up-page">
-    <h1>회원가입</h1>
-    <form @submit.prevent="signUp">
-      <div>
-        <label for="name">이름</label>
-        <input v-model="user.name" type="text" id="name" required>
-      </div>
-      <div>
-        <label for="nickname">닉네임</label>
-        <input v-model="user.nickname" type="text" id="nickname" required>
-      </div>
-      <div>
-        <label for="email">이메일</label>
-        <input v-model="user.email" type="email" id="email" required>
-      </div>
-      <div>
-        <label for="phone">전화번호</label>
-        <input v-model="user.phone" type="text" id="phone" required>
-      </div>
-      <div>
-        <label for="password">비밀번호</label>
-        <input v-model="user.password" type="password" id="password" required>
-      </div>
-      <div>
-        <label for="passwordConfirm">비밀번호 확인</label>
-        <input v-model="user.passwordConfirm" type="password" id="passwordConfirm" required>
-      </div>
-      <button type="submit">회원가입</button>
-    </form>
+  <div class="signup-container"> <!-- 로그인 화면 스타일을 적용하기 위해 클래스명 재사용 -->
+    <div class="signup"> <!-- 로그인 화면 스타일을 적용하기 위해 클래스명 재사용 -->
+      <form @submit.prevent="signUp">
+        <!-- 이름 입력 필드 -->
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input v-model="user.name" type="text" id="name" required>
+        </div>
+        <!-- 닉네임 입력 필드 -->
+        <div class="form-group">
+          <label for="nickname">닉네임</label>
+          <input v-model="user.nickname" type="text" id="nickname" required>
+        </div>
+        <!-- 이메일 입력 필드 -->
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input v-model="user.email" type="email" id="email" required>
+        </div>
+        <!-- 전화번호 입력 필드 -->
+        <div class="form-group">
+          <label for="phone">전화번호</label>
+          <input v-model="user.phone" type="text" id="phone" required>
+        </div>
+        <!-- 비밀번호 입력 필드 -->
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input v-model="user.password" type="password" id="password" required>
+        </div>
+        <!-- 비밀번호 확인 입력 필드 -->
+        <div class="form-group">
+          <label for="passwordConfirm">비밀번호 확인</label>
+          <input v-model="user.passwordConfirm" type="password" id="passwordConfirm" required>
+        </div>
+        <!-- 회원가입 버튼 -->
+        <div class="button-group">
+          <button type="submit">회원가입</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -46,15 +56,17 @@ export default {
         password: '',
         passwordConfirm: '',
       }
-    }
+    };
   },
   methods: {
     signUp() {
+      // 비밀번호 확인 로직
       if (this.user.password !== this.user.passwordConfirm) {
         alert("비밀번호가 일치하지 않습니다.");
         return;
       }
 
+      // 사용자 데이터 구성
       const userData = {
         name: this.user.name,
         nickname: this.user.nickname,
@@ -64,15 +76,13 @@ export default {
         passwordConfirm: this.user.passwordConfirm
       };
 
+      // 회원가입 요청
       axios.post('http://localhost:8080/api/v1/users/signup', userData)
           .then(response => {
-            // 요청이 성공적으로 처리되면 실행됩니다.
             alert("회원가입이 완료되었습니다.");
-            // 회원가입 성공 후 처리 로직, 예: 로그인 페이지로 리다이렉트
-            this.$router.push('/');
+            this.$router.push('/'); // 메인 페이지로 리다이렉션
           })
           .catch(error => {
-            // 요청 처리 중 오류가 발생하면 실행됩니다.
             console.error("회원가입 오류:", error);
             alert("회원가입 중 문제가 발생했습니다. 다시 시도해 주세요.");
           });
@@ -81,3 +91,61 @@ export default {
 }
 </script>
 
+<style scoped>
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('@/assets/login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(255, 255, 255, 0.3); /* 배경 이미지 위에 흰색 오버레이 추가 */
+}
+
+.signup {
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-group button {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  background-color: #0056b3;
+}
+</style>
