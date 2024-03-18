@@ -9,6 +9,7 @@ import PurchaseMain from "@/views/purchase/PurchaseMain.vue";
 import UserMain from "@/views/user/UserMain.vue";
 import Login from "@/views/user/Login.vue";
 import SignUp from "@/views/user/SignUp.vue";
+import ForgetPassword from "@/views/user/ForgetPassword.vue";
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUp
+  },
+  {
+    path: '/forget-password',
+    name: 'forget-password',
+    component: ForgetPassword
   },
 ]
 

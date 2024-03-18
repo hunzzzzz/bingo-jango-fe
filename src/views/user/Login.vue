@@ -14,6 +14,9 @@
           <button type="submit">로그인</button>
           <router-link to="/signup" button type="button">회원가입</router-link> <!-- 회원가입 버튼 추가 -->
         </div>
+        <div>
+          비밀번호를 잊으셨습니까?<router-link to="/forget-password">비밀번호찾기</router-link>
+        </div>
       </form>
       <div class="social-login-buttons">
         <a href="http://localhost:8080/oauth2/login/kakao">
