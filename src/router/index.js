@@ -11,6 +11,11 @@ import SignUp from "@/views/user/SignUp.vue";
 import ForgetPassword from "@/views/user/ForgetPassword.vue";
 import Home from "@/views/main/Home.vue";
 import ForgetEmail from "@/views/user/ForgetEmail.vue";
+import CreateRefrigerator from "@/views/refrigerator/AddRefrigerator.vue";
+import AddRefrigerator from "@/views/refrigerator/AddRefrigerator.vue";
+import JoinRefrigeratorByPassword from "@/views/refrigerator/JoinRefrigeratorByPassword.vue";
+import JoinRefrigeratorByInvitationCode from "@/views/refrigerator/JoinRefrigeratorByInvitationCode.vue";
+import SendInvitationCode from "@/views/refrigerator/SendInvitationCode.vue";
 
 const routes = [
   {
@@ -27,6 +32,26 @@ const routes = [
     path: '/refrigerator',
     name: 'refrigerator',
     component: RefrigeratorMain
+  },
+  {
+    path: '/refrigerator/add',
+    name: 'add-refrigerator',
+    component: AddRefrigerator
+  },
+  {
+    path: '/refrigerator/{refrigeratorId}/invitation',
+    name: 'send-invitation-code',
+    component: SendInvitationCode
+  },
+  {
+    path: '/refrigerator/join/password',
+    name: 'join-password-refrigerator',
+    component: JoinRefrigeratorByPassword
+  },
+  {
+    path: '/refrigerator/join/code',
+    name: 'join-code-refrigerator',
+    component: JoinRefrigeratorByInvitationCode
   },
   {
     path: '/food',
