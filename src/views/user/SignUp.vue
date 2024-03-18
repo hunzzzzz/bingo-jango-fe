@@ -1,38 +1,32 @@
 <template>
-  <div class="signup-container"> <!-- 로그인 화면 스타일을 적용하기 위해 클래스명 재사용 -->
-    <div class="signup"> <!-- 로그인 화면 스타일을 적용하기 위해 클래스명 재사용 -->
+  <div class="signup-container">
+    <div class="signup">
+        <h2 class="form-title">회원가입</h2>
       <form @submit.prevent="signUp">
-        <!-- 이름 입력 필드 -->
         <div class="form-group">
           <label for="name">이름</label>
           <input v-model="user.name" type="text" id="name" required>
         </div>
-        <!-- 닉네임 입력 필드 -->
         <div class="form-group">
           <label for="nickname">닉네임</label>
           <input v-model="user.nickname" type="text" id="nickname" required>
         </div>
-        <!-- 이메일 입력 필드 -->
         <div class="form-group">
           <label for="email">이메일</label>
           <input v-model="user.email" type="email" id="email" required>
         </div>
-        <!-- 전화번호 입력 필드 -->
         <div class="form-group">
           <label for="phone">전화번호</label>
           <input v-model="user.phone" type="text" id="phone" required>
         </div>
-        <!-- 비밀번호 입력 필드 -->
         <div class="form-group">
           <label for="password">비밀번호</label>
           <input v-model="user.password" type="password" id="password" required>
         </div>
-        <!-- 비밀번호 확인 입력 필드 -->
         <div class="form-group">
           <label for="passwordConfirm">비밀번호 확인</label>
           <input v-model="user.passwordConfirm" type="password" id="passwordConfirm" required>
         </div>
-        <!-- 회원가입 버튼 -->
         <div class="button-group">
           <button type="submit">회원가입</button>
         </div>
@@ -92,6 +86,13 @@ export default {
 </script>
 
 <style scoped>
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 .signup-container {
   display: flex;
   justify-content: center;
@@ -101,25 +102,20 @@ export default {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-color: rgba(255, 255, 255, 0.3); /* 배경 이미지 위에 흰색 오버레이 추가 */
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .signup {
-  padding: 40px;
+  padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
   width: 400px;
-}
-
-.form-group {
-  margin-bottom: 15px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
 }
 
 .form-group input {

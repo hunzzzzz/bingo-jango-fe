@@ -1,14 +1,18 @@
 <template>
-  <div class="forget-password-container">
-    <div class="forget-password">
-      <h2 class="form-title">비밀번호찾기</h2>
-      <form @submit.prevent="forgetPassword">
+  <div class="forget-email-container">
+    <div class="forget-email">
+      <h2 class="form-title">이메일찾기</h2>
+      <form @submit.prevent="forgetEmail">
         <div class="form-group">
-          <label for="email">이메일</label>
-          <input v-model="user.email" type="email" id="email" required>
+          <label for="name">이름</label>
+          <input v-model="user.name" type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">전화번호</label>
+          <input v-model="user.phone" type="text" id="phone" required>
         </div>
         <div class="button-group">
-          <button type="submit">이메일로 임시비밀번호 받기</button>
+          <button type="submit">이메일 찾기</button>
         </div>
       </form>
     </div>
@@ -19,23 +23,25 @@
 import axios from "axios";
 
 export default {
-  name: 'ForgetPassword',
+  name: 'ForgetEmail',
   data() {
     return {
       user: {
-        email: '',
+        name: '',
+        phone: '',
       }
     };
   },
   methods: {
-    forgetPassword() {
+    forgetEmail() {
       const userData = {
-        email: this.user.email,
+        name: this.user.name,
+        phone: this.user.phone,
       };
 
-      axios.post('http://localhost:8080/api/v1/users/find-password', userData)
+      axios.post('http://localhost:8080/api/v1/users/find-email', userData)
           .then(response => {
-            alert("이메일로 임시 비밀번호를 보냈습니다.")
+            alert(`이메일은 ${response.data.hiddenEmail} 입니다.`)
           })
           .catch(error => {
             console.error("비밀번호찾기 오류:", error);
@@ -54,7 +60,7 @@ export default {
   margin-bottom: 20px;
   color: #333;
 }
-.forget-password-container {
+.forget-email-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +72,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.forget-password {
+.forget-email {
   padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;

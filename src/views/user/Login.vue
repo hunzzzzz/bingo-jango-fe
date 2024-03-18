@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login">
+      <h2 class="form-title">로그인</h2>
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="email">이메일</label>
@@ -15,6 +16,9 @@
           </div>
         <div>
           계정이 없으신가요?<router-link to="/signup" button type="button">회원가입</router-link>
+        </div>
+        <div>
+          이메일을 잊으셨습니까?<router-link to="/forget-email">이메일찾기</router-link>
         </div>
         <div>
           비밀번호를 잊으셨습니까?<router-link to="/forget-password">비밀번호찾기</router-link>
@@ -55,15 +59,14 @@ export default {
         });
         if (response.data.accessToken) {
           localStorage.setItem('accessToken', response.data.accessToken);
-          // Vuex 등을 사용하여 로그인 상태를 관리하는 코드가 있다면 여기에 추가
-          this.$router.push('/'); // 메인 화면으로 리디렉션. 여기서 '/'는 메인 페이지의 라우트를 가정한 것입니다.
+          this.$router.push('/');
         }
       } catch (error) {
         console.error('로그인 실패:', error);
       }
     },
-  },
-};
+  }
+}
 </script>
 
 
@@ -78,23 +81,30 @@ export default {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-color: rgba(255, 255, 255, 0.3); /* 배경 이미지 위에 흰색 오버레이 추가 */
+  background-color: rgba(0, 0, 0, 0.8); /* 오버레이 추가 */
 }
 
 .login {
-  padding: 50px;
-  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  width: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   width: 100%;
 }
 
