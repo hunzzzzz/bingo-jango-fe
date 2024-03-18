@@ -17,6 +17,9 @@
           계정이 없으신가요?<router-link to="/signup" button type="button">회원가입</router-link>
         </div>
         <div>
+          이메일을 잊으셨습니까?<router-link to="/forget-email">이메일찾기</router-link>
+        </div>
+        <div>
           비밀번호를 잊으셨습니까?<router-link to="/forget-password">비밀번호찾기</router-link>
         </div>
       </form>
@@ -61,7 +64,7 @@ export default {
       } catch (error) {
         console.error('로그인 실패:', error);
       }
-    },
+    },//TODO 소셜로그인은 분기처리해야햄!!
   },
 };
 </script>
@@ -78,7 +81,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-color: rgba(255, 255, 255, 0.3); /* 배경 이미지 위에 흰색 오버레이 추가 */
+  background-color: rgba(0, 0, 0, 0.1); /* 배경 이미지 위에 흰색 오버레이 추가 */
 }
 
 .login {
@@ -94,7 +97,7 @@ export default {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   width: 100%;
 }
 

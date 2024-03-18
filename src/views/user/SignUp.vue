@@ -101,7 +101,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-color: rgba(255, 255, 255, 0.3); /* 배경 이미지 위에 흰색 오버레이 추가 */
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .signup {
@@ -114,12 +114,12 @@ export default {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  //margin-bottom: 5px;
 }
 
 .form-group input {

@@ -10,6 +10,7 @@ import Login from "@/views/user/Login.vue";
 import SignUp from "@/views/user/SignUp.vue";
 import ForgetPassword from "@/views/user/ForgetPassword.vue";
 import Home from "@/views/main/Home.vue";
+import ForgetEmail from "@/views/user/ForgetEmail.vue";
 
 const routes = [
   {
@@ -66,6 +67,11 @@ const routes = [
     path: '/forget-password',
     name: 'forget-password',
     component: ForgetPassword
+  },
+  {
+    path: '/forget-email',
+    name: 'forget-email',
+    component: ForgetEmail
   },
 ]
 
