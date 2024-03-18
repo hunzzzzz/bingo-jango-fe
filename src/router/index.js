@@ -80,4 +80,19 @@ const router = createRouter({
   routes
 })
 
+// 전역 네비게이션 가드 추가
+router.beforeEach((to, from, next) => {
+  // 'accessToken' 키를 사용하여 로컬 스토리지에서 토큰 가져오기
+  const token = localStorage.getItem('accessToken')
+
+  // 로그인이 필요한 페이지에 접근하려고 하고 토큰이 없을 경우
+  if (to.matched.some(record => record.meta.requiresAuth) && !token) {
+    // 로그인 페이지로 리다이렉트
+    next('/login')
+  } else {
+    // 그 외 경우에는 정상적으로 페이지 이동
+    next()
+  }
+})
+
 export default router

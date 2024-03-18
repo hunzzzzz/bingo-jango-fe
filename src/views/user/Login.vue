@@ -24,7 +24,6 @@
           비밀번호를 잊으셨습니까?<router-link to="/forget-password">비밀번호찾기</router-link>
         </div>
       </form>
-      <form @submit.prevent="oauth2">
       <div class="social-login-buttons">
         <a href="http://localhost:8080/oauth2/login/kakao">
           <img src="@/assets/kakao.jpg" alt="카카오 로그인" class="social-button">
@@ -36,7 +35,6 @@
           <img src="@/assets/google.png" alt="구글 로그인" class="social-button">
         </a>
       </div>
-      </form>
     </div>
   </div>
 </template>
@@ -66,23 +64,14 @@ export default {
       } catch (error) {
         console.error('로그인 실패:', error);
       }
-    },//TODO 소셜로그인은 분기처리해야햄!!
-    async oauth2() {
-
-    }
-  },
-};
+    },
+  }
+}
 </script>
 
 
 
 <style>
-.form-title {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-}
 .login-container {
   display: flex;
   justify-content: center;
@@ -92,19 +81,26 @@ export default {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-color: rgba(0, 0, 0, 0.1); /* 배경 이미지 위에 흰색 오버레이 추가 */
+  background-color: rgba(0, 0, 0, 0.8); /* 오버레이 추가 */
 }
 
 .login {
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
   width: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .form-group {

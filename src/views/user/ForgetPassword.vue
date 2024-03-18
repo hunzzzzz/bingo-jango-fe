@@ -63,15 +63,15 @@ export default {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .forget-password {
   padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
   width: 400px;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="home">
   <div class="center-text1">BingoJango</div>
   <div class="center-text2">여러분의 소중한 냉장고를 지켜드립니다.</div>
   </div>
@@ -18,11 +18,16 @@ body, html {
   width: 100%;
   height: 100%;
 }
-.hello {
-  background-image: url('https://cdn.pixabay.com/photo/2016/09/04/21/34/owl-1645310_1280.jpg');
-  background-size: cover;
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  position: relative;
+  background-image: url('@/assets/main.jpg');
+  background-size: cover;
+  //background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0);
 }
 .center-text1 {
   position: absolute; /* 절대 위치 설정 */
