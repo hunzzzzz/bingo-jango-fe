@@ -49,11 +49,7 @@ export default {
         password: this.refrigerator.password,
         rePassword: this.refrigerator.rePassword
       };
-      axios.post('http://localhost:8080/api/v1/refrigerator', submitForm, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
+      axios.post('http://localhost:8080/api/v1/refrigerator', submitForm, {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
             alert("냉장고가 생성되었습니다!");
           })
