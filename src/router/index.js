@@ -11,11 +11,15 @@ import SignUp from "@/views/user/SignUp.vue";
 import ForgetPassword from "@/views/user/ForgetPassword.vue";
 import Home from "@/views/main/Home.vue";
 import ForgetEmail from "@/views/user/ForgetEmail.vue";
-import CreateRefrigerator from "@/views/refrigerator/AddRefrigerator.vue";
 import AddRefrigerator from "@/views/refrigerator/AddRefrigerator.vue";
 import JoinRefrigeratorByPassword from "@/views/refrigerator/JoinRefrigeratorByPassword.vue";
 import JoinRefrigeratorByInvitationCode from "@/views/refrigerator/JoinRefrigeratorByInvitationCode.vue";
 import SendInvitationCode from "@/views/refrigerator/SendInvitationCode.vue";
+import GetMyProfile from "@/views/user/GetMyProfile.vue";
+import GetUser from "@/views/user/GetUser.vue";
+import UpdateUserPassword from "@/views/user/UpdateUserPassword.vue";
+import UpdateUserProfile from "@/views/user/UpdateUserProfile.vue";
+import WithdrawUser from "@/views/user/WithdrawUser.vue";
 
 const routes = [
   {
@@ -97,6 +101,31 @@ const routes = [
     path: '/forget-email',
     name: 'forget-email',
     component: ForgetEmail
+  },
+  {
+    path: '/get-profile',
+    name: 'get-profile',
+    component: GetMyProfile
+  },
+  {
+    path: '/get-user',
+    name: 'get-user',
+    component: GetUser
+  },
+  {
+    path: '/update-user-password',
+    name: 'update-user-password',
+    component: UpdateUserPassword
+  },
+  {
+    path: '/update-user-profile',
+    name: 'update-user-profile',
+    component: UpdateUserProfile
+  },
+  {
+    path: '/withdraw-user',
+    name: 'withdraw-user',
+    component: WithdrawUser
   },
 ]
 
