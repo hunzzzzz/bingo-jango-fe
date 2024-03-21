@@ -53,12 +53,13 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await axios.post('http://localhost:8080/api/v1/users/login', {
+        const response = await axios.post('http://localhost:8080/users/login', {
           email: this.email,
           password: this.password,
         });
-        if (response.data.accessToken) {
+        if (response.data.accessToken && response.data.refreshToken) {
           localStorage.setItem('accessToken', response.data.accessToken);
+          localStorage.setItem('refreshToken', response.data.refreshToken);
           this.$router.push('/');
         }
       } catch (error) {

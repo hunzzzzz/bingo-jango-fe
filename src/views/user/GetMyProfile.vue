@@ -7,6 +7,7 @@
         <p><strong>닉네임:</strong> {{ profile.nickname }}</p>
         <p><strong>이메일:</strong> {{ profile.email }}</p>
         <p><strong>전화번호:</strong> {{ profile.phone }}</p>
+        <p v-for="(index, item) in profile.refrigerators" :key = "index"><strong>냉장고:</strong> {{ index.name }}</p>
         <p><strong>가입일시:</strong> {{ profile.createdAt }}</p>
       </div>
     </div>
@@ -25,13 +26,16 @@ export default {
   },
   mounted() {
     this.getMyProfile();
+
   },
   methods: {
     getMyProfile() {
       const token = localStorage.getItem('accessToken');
-      axios.get("http://localhost:8080/api/v1/users/me", {headers: {'Authorization': `Bearer ${token}`}})
+      axios.get("http://localhost:8080/users/me", {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
             this.profile = response.data;
+            this.profile.refrigerators = response.data.refrigerators
+            console.log(response.data)
           }).catch(error => {
         console.error("프로필을 불러오는 데 실패했습니다.", error);
       });
