@@ -39,7 +39,7 @@ export default {
         phone: this.user.phone,
       };
 
-      axios.post('http://localhost:8080/api/v1/users/find-email', userData)
+      axios.post('http://localhost:8080/users/find-email', userData)
           .then(response => {
             alert(`이메일은 ${response.data.hiddenEmail} 입니다.`)
           })

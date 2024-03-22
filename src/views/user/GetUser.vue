@@ -32,7 +32,7 @@ export default {
     async getUser() {
       try {
         const token = localStorage.getItem('accessToken');
-        const response = await axios.get(`http://localhost:8080/api/v1/users/${this.userId},{headers: {'Authorization': \`Bearer ${token}\`}}`);
+        const response = await axios.get(`http://localhost:8080/users/${this.userId},{headers: {'Authorization': \`Bearer ${token}\`}}`);
         this.userProfile = response.data; // 가져온 프로필 정보를 저장
       } catch (error) {
         console.error("프로필 조회 실패:", error);

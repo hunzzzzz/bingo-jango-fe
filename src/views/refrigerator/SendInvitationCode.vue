@@ -34,7 +34,7 @@ export default {
       const submitForm = {
         email: this.refrigerator.email,
       };
-      axios.put('http://localhost:8080/api/v1/refrigerator/${refrigeratorId}/member', submitForm, {
+      axios.put('http://localhost:8080/refrigerator/${refrigeratorId}/member', submitForm, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
