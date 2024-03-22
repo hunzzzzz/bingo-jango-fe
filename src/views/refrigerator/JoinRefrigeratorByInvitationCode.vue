@@ -33,7 +33,7 @@ export default {
       const submitForm = {
         invitationCode: this.refrigerator.invitationCode,
       };
-      axios.put('http://localhost:8080/api/v1/refrigerator/join/code', submitForm, {
+      axios.put('http://localhost:8080/refrigerator/join/code', submitForm, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -71,7 +71,7 @@ export default {
       };
 
       // 회원가입 요청
-      axios.post('http://localhost:8080/api/v1/users/signup', userData)
+      axios.post('http://localhost:8080/users/signup', userData)
           .then(response => {
             alert("회원가입이 완료되었습니다.");
             this.$router.push('/'); // 메인 페이지로 리다이렉션

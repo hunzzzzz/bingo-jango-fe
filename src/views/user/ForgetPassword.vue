@@ -33,7 +33,7 @@ export default {
         email: this.user.email,
       };
 
-      axios.post('http://localhost:8080/api/v1/users/find-password', userData)
+      axios.post('http://localhost:8080/users/find-password', userData)
           .then(response => {
             alert("이메일로 임시 비밀번호를 보냈습니다.")
           })

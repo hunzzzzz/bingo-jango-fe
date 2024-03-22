@@ -39,7 +39,7 @@ export default {
         name: this.refrigerator.name,
         password: this.refrigerator.password,
       };
-      axios.put('http://localhost:8080/api/v1/refrigerator/join/password', submitForm, {
+      axios.put('http://localhost:8080/refrigerator/join/password', submitForm, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
