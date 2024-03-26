@@ -20,7 +20,9 @@ import GetUser from "@/views/user/GetUser.vue";
 import UpdateUserPassword from "@/views/user/UpdateUserPassword.vue";
 import UpdateUserProfile from "@/views/user/UpdateUserProfile.vue";
 import WithdrawUser from "@/views/user/WithdrawUser.vue";
-import OauthRedirect from "@/views/user/OauthRedirect.vue";
+import OauthRedirectGoogle from "@/views/user/OauthRedirectGoogle.vue";
+import OauthRedirectNaver from "@/views/user/OauthRedirectNaver.vue";
+import OauthRedirectKaKao from "@/views/user/OauthRedirectKaKao.vue";
 
 const routes = [
   {
@@ -129,9 +131,19 @@ const routes = [
     component: WithdrawUser
   },
   {
-    path: '/oauth-redirect',
-    name: 'oauth-redirect',
-    component: OauthRedirect
+    path: '/oauth-redirect-google',
+    name: 'oauth-redirect-google',
+    component: OauthRedirectGoogle
+  },
+  {
+    path: '/oauth-redirect-kakao',
+    name: 'oauth-redirect-kakao',
+    component: OauthRedirectKaKao
+  },
+  {
+    path: '/oauth-redirect-naver',
+    name: 'oauth-redirect-naver',
+    component: OauthRedirectNaver
   },
 ]
 
