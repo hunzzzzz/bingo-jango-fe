@@ -20,6 +20,7 @@ import GetUser from "@/views/user/GetUser.vue";
 import UpdateUserPassword from "@/views/user/UpdateUserPassword.vue";
 import UpdateUserProfile from "@/views/user/UpdateUserProfile.vue";
 import WithdrawUser from "@/views/user/WithdrawUser.vue";
+import OauthRedirect from "@/views/user/OauthRedirect.vue";
 
 const routes = [
   {
@@ -126,6 +127,11 @@ const routes = [
     path: '/withdraw-user',
     name: 'withdraw-user',
     component: WithdrawUser
+  },
+  {
+    path: '/oauth-redirect',
+    name: 'oauth-redirect',
+    component: OauthRedirect
   },
 ]
 
