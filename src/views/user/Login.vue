@@ -69,14 +69,20 @@ export default {
       }
     },
     loginWithKakao() {
-      window.location.href = 'http://localhost:8080/oauth2/login/kakao?redirect_uri=http://localhost:9090/login';
+      const REST_API_KEY = "77eb598dd69f9cdf9cb1a78ae6de2736"
+      const REDIRECT_URI = "http://localhost:9090/oauth-redirect-kakao"
+      const url = 'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + REST_API_KEY + "&redirect_uri=" + REDIRECT_URI;
+      window.location.href = url;
     },
     loginWithNaver() {
-      window.location.href = 'http://localhost:8080/oauth2/login/naver?redirect_uri=http://localhost:9090/login';
+      const NAVER_CLIENT_ID = "BKM2749mUdNUKWATyBA4"
+      const NAVER_REDIRECT_URL = "http://localhost:9090/oauth-redirect-naver"
+      const url = 'https://nid.naver.com/oauth2.0/authorize' + NAVER_CLIENT_ID + '&redirect_uri=' +  NAVER_REDIRECT_URL;
+      window.location.href = url;
     },
     loginWithGoogle() {
       const GOOGLE_CLIENT_ID = "760489652625-stb1of1r5qn0ac8ou08kormuq4t2i9c4.apps.googleusercontent.com"
-      const GOOGLE_REDIRECT_URL = "http://localhost:9090/oauth-redirect"
+      const GOOGLE_REDIRECT_URL = "http://localhost:9090/oauth-redirect-google"
       const url = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=' + GOOGLE_CLIENT_ID + '&redirect_uri=' + GOOGLE_REDIRECT_URL + '&response_type=code' + '&scope=email profile';
       window.location.href = url;
     },
