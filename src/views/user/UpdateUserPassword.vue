@@ -34,7 +34,7 @@ export default {
   methods: {
     updateUserPassword() {
       const token = localStorage.getItem('accessToken');
-      const apiUrl = "http://localhost:8080/users/mypage/change-pwd";
+      const apiUrl = "http://localhost:8080/{userId}/change/password";
       axios.patch(apiUrl, {
         password: this.password,
         newPassword: this.newPassword,

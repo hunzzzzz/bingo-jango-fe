@@ -45,12 +45,17 @@ const router = useRouter();
 // 로그인 상태를 체크하는 함수
 function checkLoginStatus() {
   const token = localStorage.getItem('accessToken');
+  if(token == null) {
+    //TODO 쿠키토큰을 로컬스토리지로 옮기는 로직
+  }
   isLoggedIn.value = !!token; // 토큰의 존재 여부에 따라 true 또는 false 할당
 }
+
 
 // 로그아웃 함수
 function logout() {
   localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+  localStorage.removeItem('refreshToken'); // 로컬 스토리지에서 accessToken 제거
   isLoggedIn.value = false; // 로그인 상태 업데이트
   router.push('/login'); // 로그인 페이지로 리다이렉션
 }
