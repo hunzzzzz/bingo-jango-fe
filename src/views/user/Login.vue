@@ -77,7 +77,6 @@ export default {
     loginWithNaver() {
       const NAVER_CLIENT_ID = "BKM2749mUdNUKWATyBA4"
       const NAVER_REDIRECT_URL = "http://localhost:9090/oauth-redirect-naver"
-
       const url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + NAVER_CLIENT_ID + '&redirect_uri=' + NAVER_REDIRECT_URL;
 
       window.location.href = url;
