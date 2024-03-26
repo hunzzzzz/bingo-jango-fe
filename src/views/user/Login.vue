@@ -75,7 +75,10 @@ export default {
       window.location.href = 'http://localhost:8080/oauth2/login/naver?redirect_uri=http://localhost:9090/login';
     },
     loginWithGoogle() {
-      window.location.href = 'http://localhost:8080/oauth2/login/google?redirect_uri=http://localhost:9090/login';
+      const GOOGLE_CLIENT_ID = "760489652625-stb1of1r5qn0ac8ou08kormuq4t2i9c4.apps.googleusercontent.com"
+      const GOOGLE_REDIRECT_URL = "http://localhost:9090/oauth-redirect"
+      const url = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=' + GOOGLE_CLIENT_ID + '&redirect_uri=' + GOOGLE_REDIRECT_URL + '&response_type=code' + '&scope=email profile';
+      window.location.href = url;
     },
     checkAndStoreTokens() {
       const accessToken = this.getCookie('accessToken');
