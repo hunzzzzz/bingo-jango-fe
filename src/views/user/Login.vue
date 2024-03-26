@@ -13,7 +13,7 @@
         </div>
         <div class="button-group">
           <button type="submit">로그인</button>
-          </div>
+        </div>
         <div>
           계정이 없으신가요?<router-link to="/signup" button type="button">회원가입</router-link>
         </div>
@@ -25,13 +25,13 @@
         </div>
       </form>
       <div class="social-login-buttons">
-        <a href="http://localhost:8080/oauth2/login/kakao">
+        <a @click.prevent="loginWithKakao">
           <img src="@/assets/kakao.jpg" alt="카카오 로그인" class="social-button">
         </a>
-        <a href="http://localhost:8080/oauth2/login/naver">
+        <a @click.prevent="loginWithNaver">
           <img src="@/assets/naver.png" alt="네이버 로그인" class="social-button">
         </a>
-        <a href="http://localhost:8080/oauth2/login/google">
+        <a @click.prevent="loginWithGoogle">
           <img src="@/assets/google.png" alt="구글 로그인" class="social-button">
         </a>
       </div>
@@ -41,6 +41,7 @@
 
 <script>
 import axios from 'axios';
+import {apiClient} from "@/api/client";
 
 export default {
   name: 'Login',
@@ -50,26 +51,52 @@ export default {
       password: '',
     };
   },
+  mounted() {
+    this.checkAndStoreTokens();
+  },
   methods: {
     async login() {
       try {
-        const response = await axios.post('http://localhost:8080/users/login', {
+        const response = await apiClient.post('/users/login', {
           email: this.email,
           password: this.password,
         });
-        if (response.data.accessToken && response.data.refreshToken) {
-          localStorage.setItem('accessToken', response.data.accessToken);
-          localStorage.setItem('refreshToken', response.data.refreshToken);
-          this.$router.push('/');
-        }
+        // 일반 로그인 성공 시, 서버 응답으로부터 바로 토큰을 저장합니다.
+        this.storeTokens(response.data.accessToken, response.data.refreshToken);
+        this.$router.push('/');
       } catch (error) {
         console.error('로그인 실패:', error);
       }
     },
+    loginWithKakao() {
+      window.location.href = 'http://localhost:8080/oauth2/login/kakao?redirect_uri=http://localhost:9090/login';
+    },
+    loginWithNaver() {
+      window.location.href = 'http://localhost:8080/oauth2/login/naver?redirect_uri=http://localhost:9090/login';
+    },
+    loginWithGoogle() {
+      window.location.href = 'http://localhost:8080/oauth2/login/google?redirect_uri=http://localhost:9090/login';
+    },
+    checkAndStoreTokens() {
+      const accessToken = this.getCookie('accessToken');
+      const refreshToken = this.getCookie('refreshToken');
+      if (accessToken && refreshToken) {
+        this.storeTokens(accessToken, refreshToken);
+      }
+    },
+    getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    },
+    storeTokens(accessToken, refreshToken) {
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+    }
   }
 }
 </script>
-
 
 
 <style>
@@ -151,9 +178,9 @@ export default {
     background-size: cover;
     padding: 20px;
   }
+
   .login {
     width: 100%; /* 화면이 작을 때는 폼의 너비를 확장 */
   }
 }
 </style>
-

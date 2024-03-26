@@ -31,7 +31,7 @@ export default {
   methods: {
     getMyProfile() {
       const token = localStorage.getItem('accessToken');
-      axios.get("http://localhost:8080/users/me", {headers: {'Authorization': `Bearer ${token}`}})
+      axios.get("http://localhost:8080/users/{userId}", {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
             this.profile = response.data;
             this.profile.refrigerators = response.data.refrigerators
