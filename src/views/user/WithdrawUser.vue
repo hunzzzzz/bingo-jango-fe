@@ -2,47 +2,53 @@
   <div class="main">
     <div class="box">
       <h2 class="form-title">회원탈퇴</h2>
-      <form @submit.prevent="withdrawUser">
-        <!-- 탈퇴 확인 메시지 -->
+      <form @submit.prevent="confirmWithdraw">
         <p>정말로 빙고장고를 탈퇴 하시겠습니까?</p>
-        <!-- 버튼 컨테이너 -->
+        <!-- 비밀번호 입력 필드 추가 -->
+        <input type="password" v-model="password" placeholder="비밀번호를 입력하세요" class="password-input" />
         <div class="button-container">
-          <!-- 예 버튼 -->
           <button type="button" @click="confirmWithdraw" class="left-button">예</button>
-          <!-- 아니오 버튼 -->
-          <button type="button" @click="cancelWithdraw" class="right-button">아니오</button>
+          <button type="button" @click="cancelWithdraw" class="right-button">뒤로가기</button>
         </div>
       </form>
     </div>
   </div>
 </template>
 
+
 <script>
-import {apiClient} from "@/api/client";
+import axios from "axios";
 
 export default {
   name: 'WithdrawUser',
+  data() {
+    return {
+      password: '',
+    };
+  },
   methods: {
     async confirmWithdraw() {
       try {
-        const response = await apiClient().put('/users/withdraw', {
-          // 필요한 요청 본문을 추가합니다. 예: { reason: '...' }
+        const token = localStorage.getItem('accessToken');
+        const response = await axios.put('http://localhost:8080/users/withdraw', {
+          password: this.password,
+        }, {
+          headers: {'Authorization': `Bearer ${token}`}
         });
-        alert(response.data); // 성공 메시지를 표시합니다.
-        // 탈퇴 성공 후, 메인 페이지로 리다이렉트합니다.
+        alert(response.data);
         window.location.href = '/';
       } catch (error) {
         console.error("탈퇴 처리 중 에러 발생:", error);
-        alert("탈퇴 처리 중 문제가 발생했습니다."); // 오류 메시지를 표시합니다.
+        alert("탈퇴 처리 중 문제가 발생했습니다.");
       }
     },
     cancelWithdraw() {
-      // 메인 페이지로 리다이렉트합니다.
-      window.location.href = '/';
-    }
+      this.$router.go(-1);
+    },
   }
 }
 </script>
+
 
 <style scoped>
 .main {
@@ -84,9 +90,19 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 button:hover {
   background-color: #45a049;
 }
+
+.password-input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 </style>

@@ -115,7 +115,7 @@ export default {
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-  width: 420px;
+  width: 500px;
 }
 
 .form-group label {

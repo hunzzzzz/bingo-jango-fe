@@ -52,6 +52,7 @@ export default {
       axios.post('http://localhost:8080/refrigerator', submitForm, {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
             alert("냉장고가 생성되었습니다!");
+            this.$router.go(-1);
           })
           .catch(error => {
             console.error("냉장고 생성 오류:", error);
@@ -86,9 +87,6 @@ export default {
   margin-bottom: 20px;
   color: #333;
 }
-.form-group {
-  margin-bottom: 10px;
-}
 label {
   display: block;
   margin-bottom: 5px;
@@ -107,6 +105,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 30px;
 }
 button:hover {
   background-color: #45a049;

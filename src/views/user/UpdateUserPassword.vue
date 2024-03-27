@@ -34,7 +34,7 @@ export default {
   methods: {
     updateUserPassword() {
       const token = localStorage.getItem('accessToken');
-      const apiUrl = "http://localhost:8080/{userId}/change/password";
+      const apiUrl = "http://localhost:8080/users/change/password";
       axios.patch(apiUrl, {
         password: this.password,
         newPassword: this.newPassword,
@@ -87,6 +87,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 button:hover {
