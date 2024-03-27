@@ -70,6 +70,15 @@ export default {
   color: #333;
 }
 
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px; /* 입력칸과 버튼 사이의 간격 조정 */
+  border: 1px solid #ccc; /* 테두리 추가 */
+  border-radius: 5px; /* 모서리를 둥글게 */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 내부 그림자 추가 */
+}
+
 button {
   width: 100%;
   padding: 10px;
@@ -78,9 +87,11 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s; /* 부드러운 색상 변화 */
 }
 
 button:hover {
   background-color: #45a049;
 }
+
 </style>
