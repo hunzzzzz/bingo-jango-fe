@@ -11,7 +11,6 @@
         <p>닉네임: {{ userProfile.nickname }}</p>
         <p>이메일: {{ userProfile.email }}</p>
         <p>가입일시: {{ userProfile.createdAt }}</p>
-
       </div>
     </div>
   </div>
@@ -24,8 +23,8 @@ export default {
   name: 'GetUser',
   data() {
     return {
-      userId: '', // 사용자가 입력하는 ID
-      userProfile: null, // 조회된 사용자 프로필 정보
+      userId: '',
+      userProfile: null,
     };
   },
   methods: {
@@ -34,10 +33,10 @@ export default {
         const token = localStorage.getItem('accessToken');
         const response = await axios.get(`http://localhost:8080/users/${this.userId}`,
             {headers: {'Authorization': `Bearer ${token}`}});
-        this.userProfile = response.data; // 가져온 프로필 정보를 저장
+        this.userProfile = response.data;
       } catch (error) {
         console.error("프로필 조회 실패:", error);
-        this.userProfile = null; // 에러 발생 시 userProfile을 초기화
+        this.userProfile = null;
       }
     },
   },
@@ -61,7 +60,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  width: 400px;
+  width: 450px;
 }
 
 .form-title {
