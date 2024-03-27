@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watchEffect } from 'vue';
+import {ref, onMounted, watchEffect, onUnmounted} from 'vue';
 import { useRouter } from 'vue-router';
 
 // 로그인 상태를 나타내는 반응형 참조 변수
@@ -45,11 +45,10 @@ const router = useRouter();
 // 로그인 상태를 체크하는 함수
 function checkLoginStatus() {
   const token = localStorage.getItem('accessToken');
-  if(token == null) {
-    //TODO 쿠키토큰을 로컬스토리지로 옮기는 로직
-  }
   isLoggedIn.value = !!token; // 토큰의 존재 여부에 따라 true 또는 false 할당
+  console.log(token)
 }
+
 
 
 // 로그아웃 함수
@@ -61,7 +60,13 @@ function logout() {
 }
 
 // 컴포넌트가 마운트되었을 때 로그인 상태 체크
-onMounted(checkLoginStatus);
+onMounted(() => {
+  checkLoginStatus()
+  window.addEventListener("storage", checkLoginStatus)
+} );
+onUnmounted(() =>{
+  window.removeEventListener("storage", checkLoginStatus)
+})
 
 // 로컬 스토리지의 변경을 감시하고 로그인 상태 업데이트
 // 사용자가 다른 탭에서 로그인/로그아웃할 경우에도 UI가 적절히 반응하도록 함

@@ -64,6 +64,9 @@ export default {
         // 일반 로그인 성공 시, 서버 응답으로부터 바로 토큰을 저장합니다.
         this.storeTokens(response.data.accessToken, response.data.refreshToken);
         this.$router.push('/');
+        setTimeout(() => {
+          window.location.reload()
+        })
       } catch (error) {
         console.error('로그인 실패:', error);
       }
