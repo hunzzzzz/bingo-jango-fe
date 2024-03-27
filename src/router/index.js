@@ -23,6 +23,7 @@ import WithdrawUser from "@/views/user/WithdrawUser.vue";
 import OauthRedirectGoogle from "@/views/user/OauthRedirectGoogle.vue";
 import OauthRedirectNaver from "@/views/user/OauthRedirectNaver.vue";
 import OauthRedirectKaKao from "@/views/user/OauthRedirectKaKao.vue";
+import GetRefrigerator from "@/views/refrigerator/GetRefrigerator.vue";
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     path: '/refrigerator',
     name: 'refrigerator',
     component: RefrigeratorMain
+  },
+  {
+    path: '/refrigerator/get',
+    name: 'get-refrigerator',
+    component: GetRefrigerator
   },
   {
     path: '/refrigerator/add',

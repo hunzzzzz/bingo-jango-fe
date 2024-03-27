@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <div class="box">
+      <router-link to="refrigerator/get">냉장고 조회</router-link>
       <router-link to="refrigerator/add">냉장고 생성</router-link>
       <router-link to="refrigerator/{refrigeratorId}/invitation">냉장고 초대코드 발송하기</router-link>
       <router-link to="refrigerator/join/password">기존 냉장고 참여 (비밀번호 이용)</router-link>

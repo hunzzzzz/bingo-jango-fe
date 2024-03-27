@@ -9,6 +9,10 @@
         <p>전화번호: {{ profile.phone }}</p>
         <p>가입일시: {{ profile.createdAt }}</p>
       </div>
+      <div class="btns">
+      <button @click="editProfile" class="btn">수정하기</button>
+      <button @click="goBack" class="btn">뒤로가기</button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +41,14 @@ export default {
           }).catch(error => {
         console.error("프로필을 불러오는 데 실패했습니다.", error);
       });
+    },
+    editProfile() {
+      // 프로필 수정 페이지로 이동
+      this.$router.push('/update-user-profile');
+    },
+    goBack() {
+      // 이전 페이지로 돌아가기
+      this.$router.go(-1);
     }
   }
 }
@@ -67,5 +79,26 @@ export default {
   font-size: 24px;
   margin-bottom: 20px;
   color: #333;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.btn {
+  width: 45%; /* 버튼 너비를 줄여 두 버튼이 같은 줄에 위치하도록 함 */
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btn:hover {
+  background-color: #45a049;
 }
 </style>
