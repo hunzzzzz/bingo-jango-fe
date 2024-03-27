@@ -12,19 +12,23 @@
           <input v-model="user.nickname" type="text" id="nickname" required>
         </div>
         <div class="form-group">
-          <label for="email">이메일</label>
+          <span>이메일</span>
+          <span style="margin-left: 7px; color: red; font-size: 11px;">이메일 형식으로 입력 바랍니다</span>
           <input v-model="user.email" type="email" id="email" required>
         </div>
         <div class="form-group">
-          <label for="phone">전화번호</label>
+          <span>전화번호</span>
+          <span style="margin-left: 7px; color: red; font-size: 11px;">예시) 010-1234-5678</span>
           <input v-model="user.phone" type="text" id="phone" required>
         </div>
         <div class="form-group">
-          <label for="password">비밀번호</label>
+          <span>비밀번호</span>
+          <span style="margin-left: 7px; color: red; font-size: 11px;">8~16자, 알파벳 대소문자, 숫자, 특수문자를 포함해야 합니다</span>
           <input v-model="user.password" type="password" id="password" required>
         </div>
         <div class="form-group">
-          <label for="passwordConfirm">비밀번호 확인</label>
+          <span>비밀번호 확인</span>
+          <span style="margin-left: 7px; color: red; font-size: 11px;">8~16자, 알파벳 대소문자, 숫자, 특수문자를 포함해야 합니다</span>
           <input v-model="user.passwordConfirm" type="password" id="passwordConfirm" required>
         </div>
         <div class="button-group">
@@ -111,7 +115,7 @@ export default {
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-  width: 400px;
+  width: 420px;
 }
 
 .form-group label {
