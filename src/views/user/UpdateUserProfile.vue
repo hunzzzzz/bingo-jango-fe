@@ -12,11 +12,6 @@
           <input v-model="user.nickname" type="text" id="nickname" required>
         </div>
         <div class="form-group">
-          <span>이메일</span>
-          <span style="margin-left: 7px; color: red; font-size: 11px;">이메일 형식으로 입력 바랍니다</span>
-          <input v-model="user.email" type="email" id="email" required>
-        </div>
-        <div class="form-group">
           <span>전화번호</span>
           <span style="margin-left: 7px; color: red; font-size: 11px;">예시) 010-1234-5678</span>
           <input v-model="user.phone" type="text" id="phone" required>
@@ -39,7 +34,6 @@ export default {
       user: {
         name: '',
         nickname: '',
-        email: '',
         phone: '',
       }
     }
@@ -56,9 +50,10 @@ export default {
             const errorMessage = error.response && error.response.data.message;
             if (errorMessage === "존재하는 닉네임이에요.") {
               alert("존재하는 닉네임이에요.");
-            } else if (errorMessage === "존재하는 이메일이에요."){
-              alert("존재하는 이메일이에요.");
-            } else {
+            } else if (errorMessage === "전화번호는 하이픈(-)을 포함해서 입력해주세요. ex) 010-1234-5678") {
+              alert("전화번호는 하이픈(-)을 포함해서 입력해주세요.\n ex) 010-1234-5678")
+            }
+            else {
               alert("회원수정 중 문제가 발생했습니다. 다시 시도해 주세요.");
             }
             console.error("회원수정 중 문제가 발생했습니다.", error);
