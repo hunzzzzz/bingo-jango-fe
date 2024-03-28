@@ -31,6 +31,14 @@ export default {
         })
       } catch (error) {
         console.error('로그인 실패:', error);
+        // 이미 사용 중인 이메일로 인한 오류 처리
+        if (error.response && error.response.data.message === "이미 사용 중인 이메일입니다.") {
+          alert("이미 사용 중인 이메일입니다.");
+        } else {
+          // 기타 오류에 대한 처리
+          alert("로그인에 실패했습니다. 다시 시도해주세요.");
+        }
+        this.$router.go(-1)
       }
     },
     checkAndStoreTokens() {
