@@ -3,6 +3,10 @@
     <div class="box">
       <h2 class="form-title">내 프로필 조회</h2>
       <div v-if="profile">
+        <img alt="프로필 이미지"
+             class="profile_image"
+             :src="imageSource"
+        />
         <p>이름: {{ profile.name }}</p>
         <p>닉네임: {{ profile.nickname }}</p>
         <p>이메일: {{ profile.email }}</p>
@@ -24,8 +28,13 @@ export default {
   name: 'GetMyProfile',
   data() {
     return {
-      profile: null,
+      profile: null
     };
+  },
+  computed: {
+    imageSource(){
+      return this.profile.image != null ? this.profile.image : require('@/assets/default-profile.png')
+    }
   },
   mounted() {
     this.getMyProfile();
@@ -37,7 +46,6 @@ export default {
           {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
             this.profile = response.data;
-            console.log(response.data)
           }).catch(error => {
         console.error("프로필을 불러오는 데 실패했습니다.", error);
       });
@@ -65,6 +73,12 @@ export default {
   background-blend-mode: overlay;
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.profile_image {
+  display: block;
+  margin-bottom: 20px; /* 원하는 공백 크기 조절 */
+}
+
 
 .box {
   padding: 30px;

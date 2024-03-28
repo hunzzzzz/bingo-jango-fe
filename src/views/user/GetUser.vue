@@ -8,6 +8,10 @@
       </form>
       <div v-if="userProfile">
         <h3>프로필 정보</h3>
+        <img alt="프로필 이미지"
+             class="profile_image"
+             :src="imageSource"
+        />
         <p>닉네임: {{ userProfile.nickname }}</p>
         <p>이메일: {{ userProfile.email }}</p>
         <p>가입일시: {{ userProfile.createdAt }}</p>
@@ -25,6 +29,7 @@ export default {
     return {
       userId: '',
       userProfile: null,
+      imageSource: '',
     };
   },
   methods: {
@@ -34,14 +39,19 @@ export default {
         const response = await axios.get(`http://localhost:8080/users/${this.userId}`,
             {headers: {'Authorization': `Bearer ${token}`}});
         this.userProfile = response.data;
+        this.imageSource = this.getImageSource();
       } catch (error) {
         console.error("프로필 조회 실패:", error);
         this.userProfile = null;
+        this.imageSource = this.getImageSource(); // 에러 발생 시 기본 이미지로 업데이트
       }
     },
-  },
+      getImageSource() {
+        return this.userProfile && this.userProfile.image ? this.userProfile.image : require('@/assets/default-profile.png');
+      },
+    }
 };
-</script>
+</script>,
 
 <style scoped>
 .main {
@@ -53,6 +63,14 @@ export default {
   background-size: cover;
   background-blend-mode: overlay;
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.profile_image {
+  display: block;
+  margin-bottom: 20px;
+  max-width: 250px;
+  max-height: 250px;
+  object-fit: cover;
 }
 
 .box {
